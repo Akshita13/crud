@@ -3,6 +3,11 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { FakebackendService } from './fakebackend.service';
+import { HttpClientModule } from '@angular/common/http';
+import { DataModule } from './data/data.module';
+import { CoreService } from './core/core.service';
 
 
 @NgModule({
@@ -10,9 +15,10 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,HttpClientInMemoryWebApiModule.forRoot(FakebackendService),
+    HttpClientModule,DataModule
   ],
-  providers: [],
+  providers: [FakebackendService,CoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
